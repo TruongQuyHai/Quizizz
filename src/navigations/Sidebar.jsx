@@ -14,6 +14,10 @@ const Sidebar = () => {
         filter:
           "drop-shadow(0 0 1px rgba(0,0,0,.05)) drop-shadow(0 2px 4px rgba(0,0,0,.08))",
         background: "#FFFFFF",
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        left: 0,
       }}
       className="d-flex flex-column"
     >

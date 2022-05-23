@@ -8,6 +8,7 @@ const activeStyle = ({ $active }) =>
         color: #8854c0;
         box-shadow: inset -4px 0 0 0 #8854c0;
         background: rgba(242, 242, 242, 1);
+        /* TODO: convert background & color to theme */
         font-weight: 600;
       `
     : css`
@@ -18,7 +19,6 @@ const LinkStyle = styled(Link)`
   display: flex;
   align-items: center;
   ${(props) => activeStyle(props)}
-  font-size: 0.875rem;
   &:hover {
     background: rgba(242, 242, 242, 1);
   }
@@ -26,7 +26,7 @@ const LinkStyle = styled(Link)`
 
 const TabLink = ({ children, icon, ...props }) => {
   return (
-    <LinkStyle className="h-2.75 text-dark-424242" {...props}>
+    <LinkStyle className="h-2.75 text-dark-424242 font-semibold" {...props}>
       <span className="ml-1 mr-0.75">{icon}</span>
       <span>{children}</span>
     </LinkStyle>

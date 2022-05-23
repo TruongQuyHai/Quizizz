@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import {
-  HorizontalPadding1rem,
-  VerticalPadding375rem,
-  VerticalPadding625rem,
-} from "../utils";
 import Icon from "./Icon";
 import TextLg from "./TextLg";
 
-const _BaseStyle = styled.button`
+const BaseStyleButton = styled.button`
   display: flex;
   align-items: center;
   position: relative;
@@ -16,23 +11,16 @@ const _BaseStyle = styled.button`
   border: none;
 `;
 
-const ButtonIconRight = styled(_BaseStyle)`
+const ButtonSmall = styled(BaseStyleButton)`
   border-radius: 1rem;
   font-size: 0.75rem;
   line-height: 1rem;
   letter-spacing: 0;
 `;
 
-const ButtonIconLeftRight = styled(_BaseStyle)`
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 0 0 #6c4298;
-  width: 10.5rem;
-  border-radius: 0.5rem;
-`;
-
 export const ButtonRounded = () => {
   return (
-    <ButtonIconRight
+    <ButtonSmall
       style={{
         background: "rgba(255, 164, 2, 0.2)",
         color: "rgba(206, 132, 0, 1)",
@@ -41,9 +29,16 @@ export const ButtonRounded = () => {
     >
       <span>Upgrade to super</span>
       <Icon className="fas fa-bolt ml-0.5" fs="11px" />
-    </ButtonIconRight>
+    </ButtonSmall>
   );
 };
+
+const ButtonIconLeftRight = styled(BaseStyleButton)`
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 0 0 #6c4298;
+  width: 10.5rem;
+  border-radius: 0.5rem;
+`;
 
 export const ButtonBoxShadow = () => {
   return (
@@ -60,3 +55,40 @@ export const ButtonBoxShadow = () => {
     </ButtonIconLeftRight>
   );
 };
+
+const TextButtonStyle = styled(BaseStyleButton)``;
+
+export const ButtonText = ({ children, ...props }) => {
+  return <TextButtonStyle {...props}>{children}</TextButtonStyle>;
+};
+
+const RoundedButton = styled(BaseStyleButton)`
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonIcon = ({
+  children,
+  iconRight,
+  iconOnly,
+  icon,
+  ...props
+}) => {
+  if (iconOnly) return <RoundedButton {...props}>{icon}</RoundedButton>;
+  return (
+    <>
+      <TextButtonStyle {...props}>{children}</TextButtonStyle>
+      {iconRight}
+    </>
+  );
+};
+
+export const ButtonTextPrimary = styled(ButtonText)`
+  background-color: rgba(237, 230, 246, 1);
+  color: rgba(136, 84, 192, 1);
+  &:hover {
+    color: rgba(160, 118, 204, 1);
+  }
+`;
