@@ -1,49 +1,41 @@
 import styled from "styled-components";
 import Icon from "./Icon";
-import Input from "./Input";
 
 const SearchBarStyle = styled.div`
   border-radius: 0.5rem;
   background: rgba(242, 242, 242, 1);
 `;
 
+// TODO: refactor Search bar
 const SearchBar = ({
+  input,
   style,
   className,
-  placeholder,
+  searchIconStyle,
+  searchIconClassName,
   rightSection,
+  fs = "12px",
   divider = true,
 }) => {
   return (
-    <SearchBarStyle
-      className={`d-flex p-relative w-100% pl-2.25 pr-0.5 py-0.5 h-2.5${
-        className ? " " + className : ""
-      }`}
-      style={style}
-    >
+    <SearchBarStyle className={className} style={style}>
       {/* Search Icon & Input */}
       <div style={{ width: "100%" }} className="center-item">
         <Icon
           style={{
-            width: 24,
-            height: 24,
             left: "0.5em",
             top: "50%",
             transform: "translateY(-50%)",
+
+            ...searchIconStyle,
           }}
-          className="fas fa-search p-absolute center-item pt-0.125"
-          fs="12px"
+          className={`fas fa-search p-absolute center-item pt-0.125${
+            searchIconClassName ? " " + searchIconClassName : ""
+          }`}
+          fs={fs}
         />
 
-        <Input
-          placeholder={placeholder}
-          style={{
-            borderRadius: "inherit",
-            background: "inherit",
-            paddingRight: "0.5em",
-          }}
-          className="w-100% font-semibold text-sm"
-        />
+        {input}
       </div>
 
       {/* Divider */}

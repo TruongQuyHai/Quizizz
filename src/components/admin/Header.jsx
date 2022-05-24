@@ -1,5 +1,6 @@
 import { ButtonIcon, ButtonTextPrimary } from "./Button";
 import Icon from "./Icon";
+import Input from "./Input";
 import SearchBar from "./SearchBar";
 
 const Header = () => {
@@ -7,7 +8,19 @@ const Header = () => {
     <header className="p-0.5">
       <div className="d-flex">
         <SearchBar
-          placeholder="Search"
+          className="d-flex p-relative w-100% pl-2.25 pr-0.5 py-0.5 h-2.5"
+          searchIconStyle={{ width: 24, height: 24 }}
+          input={
+            <Input
+              placeholder="Search"
+              style={{
+                borderRadius: "inherit",
+                background: "inherit",
+                paddingRight: "0.5em",
+              }}
+              className="w-100% font-semibold text-sm"
+            />
+          }
           rightSection={
             <div
               style={{
@@ -36,7 +49,7 @@ const Header = () => {
             style={{
               height: "100%",
             }}
-            className="duration-200 py-0.25 px-1"
+            className="duration-200 py-0.25 px-1 rounded"
           >
             Enter code
           </ButtonTextPrimary>
@@ -45,7 +58,7 @@ const Header = () => {
         <ButtonIcon
           iconOnly
           className="ml-0.5"
-          style={{ width: 40, height: 40, flexShrink: 0 }}
+          style={{ width: "40px", height: "40px", flexShrink: 0 }}
           icon={<Icon className="fas fa-bell" fs="16px" />}
         />
       </div>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { css } from "styled-components";
 
 const BaseStyleButton = styled.button`
   display: flex;
@@ -7,6 +8,18 @@ const BaseStyleButton = styled.button`
   cursor: pointer;
   font-weight: 600;
   border: none;
+  ${({ yStyle }) => yStyle};
+  ${({ hoverStyle }) =>
+    css`
+      &:hover {
+        ${hoverStyle}
+      }
+    `}
+  ${({ activeStyle }) => css`
+    &:active {
+      ${activeStyle}
+    }
+  `}
 `;
 
 const RoundedButton = styled(BaseStyleButton)`
@@ -21,19 +34,22 @@ export const ButtonIcon = ({
   iconOnly,
   icon,
   buttonStyle,
+  style,
   ...props
 }) => {
-  if (iconOnly) return <RoundedButton {...props}>{icon}</RoundedButton>;
-
+  if (iconOnly)
+    return (
+      <RoundedButton yStyle={style} {...props}>
+        {icon}
+      </RoundedButton>
+    );
   const Component = buttonStyle || BaseStyleButton;
   return (
-    <div>
-      <Component {...props}>
-        {iconLeft}
-        {children}
-        {iconRight}
-      </Component>
-    </div>
+    <Component yStyle={style} {...props}>
+      {iconLeft}
+      {children}
+      {iconRight}
+    </Component>
   );
 };
 
@@ -50,6 +66,8 @@ export const ButtonIconBoxShadow = ({
   content,
   iconLeft,
   iconRight,
+  hoverStyle,
+  ...props
 }) => {
   return (
     <ButtonIcon
@@ -58,25 +76,28 @@ export const ButtonIconBoxShadow = ({
       iconLeft={iconLeft}
       iconRight={iconRight}
       buttonStyle={ButtonIconBoxShadowStyle}
+      hoverStyle={hoverStyle}
+      {...props}
     >
       <span>{content}</span>
     </ButtonIcon>
   );
 };
 
-const ButtonIconPillSmallStyle = styled(BaseStyleButton)`
+const ButtonIconPillTinyStyle = styled(BaseStyleButton)`
   border-radius: 1rem;
   font-size: 0.75rem;
   line-height: 1rem;
   letter-spacing: 0;
 `;
 
-export const ButtonIconPillSmall = ({
+export const ButtonIconPillTiny = ({
   style,
   className,
   content,
   iconLeft,
   iconRight,
+  hoverStyle,
 }) => {
   return (
     <ButtonIcon
@@ -84,7 +105,8 @@ export const ButtonIconPillSmall = ({
       className={className}
       iconLeft={iconLeft}
       iconRight={iconRight}
-      buttonStyle={ButtonIconPillSmallStyle}
+      buttonStyle={ButtonIconPillTinyStyle}
+      hoverStyle={hoverStyle}
     >
       <span>{content}</span>
     </ButtonIcon>

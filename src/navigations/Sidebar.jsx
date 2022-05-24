@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Badge from "../components/admin/Badge";
 import {
   ButtonIconBoxShadow,
-  ButtonIconPillSmall,
+  ButtonIconPillTiny,
 } from "../components/admin/Button";
 import Icon from "../components/admin/Icon";
 import Logo from "../components/admin/Logo";
@@ -31,14 +31,17 @@ const Sidebar = () => {
 
       <div className="p-1 pb-0.5">
         <Name name="Hải Quý" /> <br />
-        <Badge type="Basic account" />
-        <ButtonIconPillSmall
+        <Badge className="rounded mb-0.75" type="Basic account" />
+        <ButtonIconPillTiny
           style={{
             background: "rgba(255, 164, 2, 0.2)",
             color: "rgba(206, 132, 0, 1)",
             width: "100%",
           }}
-          className="py-0.375 px-1 mb-1 text-xs h-2 center-item"
+          hoverStyle={{
+            color: "rgba(255,182,53,1)",
+          }}
+          className="py-0.375 px-1 mb-1 text-xs h-2 center-item duration-200"
           content="Upgrade to super"
           iconRight={<Icon className="fas fa-bolt ml-0.5" fs="11px" />}
         />
@@ -50,7 +53,13 @@ const Sidebar = () => {
             background: "rgba(136,84,192,1)",
             color: "#FFFFFF",
           }}
-          className="py-0.625 px-1 mb-1.75 text-lg font-medium"
+          hoverStyle={{
+            background: "rgba(160,118,204,1)",
+          }}
+          activeStyle={{
+            background: "rgba(108,66,152,1)",
+          }}
+          className="duration-200 py-0.625 px-1 mb-1.75 text-lg font-medium"
           iconLeft={<Icon className="fas fa-plus-circle mr-0.5" fs="16px" />}
           iconRight={<Icon className="fas fa-caret-down ml-auto" fs="16px" />}
           content="Create"
