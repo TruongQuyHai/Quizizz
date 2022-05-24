@@ -26,7 +26,7 @@ const LinkStyle = styled(Link)`
 
 const TabLink = ({ children, icon, ...props }) => {
   return (
-    <LinkStyle className="h-2.75 text-dark-424242 font-semibold" {...props}>
+    <LinkStyle className="h-2.75 text-dark text-sm" {...props}>
       <span className="ml-1 mr-0.75">{icon}</span>
       <span>{children}</span>
     </LinkStyle>

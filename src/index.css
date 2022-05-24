@@ -6,7 +6,18 @@
 
 @font-face {
   font-family: "Open Sans";
-  src: url("./assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf");
+  font-weight: 400;
+  src: url("./assets/fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 600;
+  src: url("./assets/fonts/Open_Sans/static/OpenSans/OpenSans-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 500;
+  src: url("./assets/fonts/Open_Sans/static/OpenSans/OpenSans-Medium.ttf");
 }
 
 html,
@@ -163,14 +174,24 @@ a {
   height: 2.5rem;
 }
 
+.h-2 {
+  height: 2rem;
+}
+
 .h-100\% {
   height: 100%;
 }
 /* h */
 
+/* background light */
+.background-light {
+  background: rgba(242, 242, 242, 1);
+}
+/*  */
+
 /* text-dark */
-.text-dark-424242 {
-  color: #424242;
+.text-dark {
+  color: rgba(66, 66, 66, 1);
 }
 /* text-dark */
 
@@ -229,12 +250,35 @@ a {
 .font-semibold {
   font-weight: 600;
 }
+.font-medium {
+  font-weight: 500;
+}
 
 /* font-weight */
 
 /* text */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
 .text-sm {
   font-size: 0.875rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0;
+}
+
+.text-tn {
+  font-size: 0.625rem;
+  line-height: 1rem;
+  letter-spacing: 0.015em;
 }
 /* text */
 

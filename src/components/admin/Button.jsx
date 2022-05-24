@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Icon from "./Icon";
-import TextLg from "./TextLg";
 
 const BaseStyleButton = styled.button`
   display: flex;
@@ -11,78 +9,90 @@ const BaseStyleButton = styled.button`
   border: none;
 `;
 
-const ButtonSmall = styled(BaseStyleButton)`
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  letter-spacing: 0;
+const RoundedButton = styled(BaseStyleButton)`
+  border-radius: 50%;
+  justify-content: center;
 `;
 
-export const ButtonRounded = () => {
+export const ButtonIcon = ({
+  children,
+  iconLeft,
+  iconRight,
+  iconOnly,
+  icon,
+  buttonStyle,
+  ...props
+}) => {
+  if (iconOnly) return <RoundedButton {...props}>{icon}</RoundedButton>;
+
+  const Component = buttonStyle || BaseStyleButton;
   return (
-    <ButtonSmall
-      style={{
-        background: "rgba(255, 164, 2, 0.2)",
-        color: "rgba(206, 132, 0, 1)",
-      }}
-      className="py-0.375 px-1 mb-1"
-    >
-      <span>Upgrade to super</span>
-      <Icon className="fas fa-bolt ml-0.5" fs="11px" />
-    </ButtonSmall>
+    <div>
+      <Component {...props}>
+        {iconLeft}
+        {children}
+        {iconRight}
+      </Component>
+    </div>
   );
 };
 
-const ButtonIconLeftRight = styled(BaseStyleButton)`
+const ButtonIconBoxShadowStyle = styled(BaseStyleButton)`
   border-radius: 0.5rem;
   box-shadow: 0 4px 0 0 #6c4298;
   width: 10.5rem;
   border-radius: 0.5rem;
 `;
 
-export const ButtonBoxShadow = () => {
+export const ButtonIconBoxShadow = ({
+  style,
+  className,
+  content,
+  iconLeft,
+  iconRight,
+}) => {
   return (
-    <ButtonIconLeftRight
-      style={{
-        background: "rgba(136,84,192,1)",
-        color: "#FFFFFF",
-      }}
-      className="py-0.625 px-1 mb-1.75"
+    <ButtonIcon
+      style={style}
+      className={className}
+      iconLeft={iconLeft}
+      iconRight={iconRight}
+      buttonStyle={ButtonIconBoxShadowStyle}
     >
-      <Icon className="fas fa-plus-circle mr-0.5" fs="16px" />
-      <TextLg>Create</TextLg>
-      <Icon className="fas fa-caret-down ml-auto" fs="16px" />
-    </ButtonIconLeftRight>
+      <span>{content}</span>
+    </ButtonIcon>
   );
 };
 
-const TextButtonStyle = styled(BaseStyleButton)``;
-
-export const ButtonText = ({ children, ...props }) => {
-  return <TextButtonStyle {...props}>{children}</TextButtonStyle>;
-};
-
-const RoundedButton = styled(BaseStyleButton)`
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const ButtonIconPillSmallStyle = styled(BaseStyleButton)`
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0;
 `;
 
-export const ButtonIcon = ({
-  children,
+export const ButtonIconPillSmall = ({
+  style,
+  className,
+  content,
+  iconLeft,
   iconRight,
-  iconOnly,
-  icon,
-  ...props
 }) => {
-  if (iconOnly) return <RoundedButton {...props}>{icon}</RoundedButton>;
   return (
-    <>
-      <TextButtonStyle {...props}>{children}</TextButtonStyle>
-      {iconRight}
-    </>
+    <ButtonIcon
+      style={style}
+      className={className}
+      iconLeft={iconLeft}
+      iconRight={iconRight}
+      buttonStyle={ButtonIconPillSmallStyle}
+    >
+      <span>{content}</span>
+    </ButtonIcon>
   );
+};
+
+export const ButtonText = ({ children, ...props }) => {
+  return <BaseStyleButton {...props}>{children}</BaseStyleButton>;
 };
 
 export const ButtonTextPrimary = styled(ButtonText)`

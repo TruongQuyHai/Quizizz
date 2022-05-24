@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const NamedComponent = styled(Link)`
-  font-weight: 600;
-  line-height: 1.5rem;
-  letter-spacing: -0.01em;
+const NameStyle = styled(Link)`
   color: #000000;
-  font-weight: 600;
 `;
 
-const Name = () => {
+const Name = ({ name }) => {
   return (
-    <NamedComponent className="font-semibold" to="/admin">
-      Hải Quý
-    </NamedComponent>
+    <NameStyle className="font-semibold text-sm" to="/admin">
+      {name}
+    </NameStyle>
   );
 };
 
